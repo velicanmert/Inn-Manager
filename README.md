@@ -4,7 +4,7 @@ Bilkent SPRING 2021
 
 CS 353 DATABASE SYSTEMS
 
-Hotel Database Management System Project
+Hotel Database Management System
 
 Group 37
 
