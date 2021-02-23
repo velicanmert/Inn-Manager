@@ -1,6 +1,8 @@
 # Inn-Manager
 
-Bilkent CS 353 
+Bilkent SPRING 2021
+
+CS 353 DATABASE SYSTEMS
 
 Hotel Database Management System Project
 
