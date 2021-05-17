@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome Page</title>
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
+
+    <body>
+    <script src="bootstrap.js"></script>
+    <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>  
+        <br>
+        <br>
+        <br>
+
+        <div class="h1" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+            <br> <u>Register</u> <br>   
+        </div>
+
+        <script>
+            function controlInput() {
+                if (document.getElementById("username").value == "" || document.getElementById("password").value == "" ||  document.getElementById("email").value == "" || document.getElementById("checkbox").checked == false ) {
+                    alert("Fill and check all required parts!");
+                }
+                else {
+                    var form = document.getElementById("login").submit();
+                }
+            }
+        </script>
+
+        <div class="h3" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+            <form id = "login" method = "post" action="registerpage">
+                <br>
+                Register as: 
+                <label>
+                    <input type="radio" name="registeras" required> Guest
+                </label>  
+                <label>
+                    <input type="radio"  name="registeras" required> Employee 
+                </label>
+                <br><br>
+
+                Username:<br>
+                <input type="text" id= "username" name="username" placeholder="enter username" style="text-align:center;" required><br>
+
+                Password:<br>
+                <input type="text" id="password" name="password" placeholder="enter password" style="text-align:center;" required>
+                <br>
+
+                BirthDate:<br>
+                <input type="date" id="bdate" name="bdate" placeholder="enter your birthdate" style="text-align:center;" required>
+                <br>
+
+                Gender:<br>
+                <input type="text" id="gender" name="gender" placeholder="enter your gender" style="text-align:center;" required>
+                <br>
+
+                Address:<br>
+                <input type="text" id="address" name="address" placeholder="enter your address" style="text-align:center;" required>
+                <br>
+
+                <br>
+
+                <label>
+                    <input type ="checkbox" id="checkbox" required> I agree to terms & conditions 
+                </label>       
+                <br><br>
+
+                <input type="submit" name="Register" value="Register" onclick="controlInput()">
+            </form>  
+            <br>
+            <a href="indexpage" class="btn btn-primary" >Back</a> <br>
+        
+        </div>              
+
+    </div>
+    </body>
+</html>

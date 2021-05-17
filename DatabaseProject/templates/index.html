@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Welcome</title>
+        <link rel="stylesheet" href="bootstrap.css">
+    
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>       
+
+            <div class="h1">
+                
+                <br> Welcome to hotel managament system!
+                <br>   
+            </div>
+
+            <div style='text-align: center'>
+                <img src="{{url_for('static',filename='hotelpic.png')}}" alt="Hotel Scene"> 
+            </div>
+
+            <div class="h2" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br> <u>Login Information</u> <br>   
+            </div>
+            
+            <script >
+                function controlInput() {
+                    if (document.getElementById("username").value == "" || document.getElementById("password").value == "") {
+                        alert("Fill all required parts!");
+                    }
+                    else {
+                        var form = document.getElementById("login").submit();
+                    }
+                }
+            </script>
+
+            <div class="h3" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <form id = "login" method = "post" action="loginpage">
+                    <!-- <input type ="checkbox"> --> 
+                    <br>
+                    Username:<br>
+                    <input type="text" id= "username" name="username" placeholder="Username" style="text-align:center;" required><br>
+                    Password:<br>
+                    <input type="text" id="password" name="password" placeholder="Password" style="text-align:center;" required>
+                    <br><br>
+                    <input type="submit" name="Submit" value="Login" onclick="controlInput()">
+                </form>  
+                <br>
+                <a href="registerpage" class="btn btn-primary" >Register</a> <br>
+                <a style="font-size:smaller;" href="indexpage">Forgot my password</a> <!-- TODO -->
+            </div>              
+
+        </div>
+    </body>
+</html>

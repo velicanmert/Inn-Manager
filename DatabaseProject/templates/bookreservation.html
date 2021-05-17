@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Book Reservation</title>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            $(document).ready(function () {
+                $(document).on('click', '.refresher', function () {
+                    $.ajax({
+                        url: 'ajax.php',
+                        method: get,
+                        dataType: 'json',
+                        success: function(response) {
+                            $('#table-to-refresh').html(response);
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            function getRow(n) {
+                var selectedRoom = []
+                var row = n.parentNode.parentNode;
+                var cols = row.getElementsByTagName("td");
+                var i = 0;
+
+                while (i < cols.length) {
+                    var val = cols[i].childNodes[0].nodeValue;
+                    if (val != null) {
+                        selectedRoom.push(val)
+                        //alert(val);
+                    }
+                    i++;
+                }
+                document.getElementById("roomNo").value = selectedRoom[0];
+            }
+        </script>
+
+        <script>
+            var roomChoice;
+            function getval(sel)
+            {
+                roomChoice = sel.value;
+                localStorage.setItem("roomselection", roomChoice);
+                document.getElementById("roomType").value = roomChoice;
+                //alert(sel.value);
+            }
+        </script>
+
+        <script>
+
+            availableRooms = [
+                ["367","Single","130$"],
+                ["150","Single","120$"],
+                ["450","Single","140$"],
+                ["455","Double","180$"],
+                ["457","Double","185$"],
+                ["458","Triple","180$"],
+                ["555","Quad","205$"],
+                ["657","King","250$"]
+            ]
+            
+            function makeTableHTML() {
+                var typeChoice = localStorage.getItem("roomselection");
+                //alert("Selection: "+typeChoice);
+                document.write("<table style='border:1px solid black;'");
+                document.write("<thead><tr><th>Number</th><th>Type</th><th>Price</th><th>Select</th></tr></thead>");
+                document.write ("<tbody>");
+                for(var i=0; i < availableRooms.length; i++) {
+                    if(availableRooms[i][1] == typeChoice)
+                    {
+                        document.write("<tr>");
+                        for(var j=0; j<availableRooms[i].length; j++){
+                            document.write("<td>"+availableRooms[i][j]+"</td>");
+                        }
+                        document.write("<td style='text-align: center; vertical-align: middle;'><input type='checkbox' id='opt"+i+"' name= 'opt"+i+"' onclick='getRow(this)' /></td>");
+                        document.write("</tr>");
+                    }
+                    
+                }
+
+                document.write("</tbody></table>");
+            }
+        </script>
+
+        <script>
+            function controlInput() {      
+                var form = document.getElementById("login").submit();       
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+        
+            <div class="h1" style='text-align: center;'>
+                <br><br><br> <b>Book a reservation</b> <br><br>
+            </div>
+
+            <div class="h2" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <form id="login" method="post" action="bookreservationpage">
+
+                    Check-In Date:<br>
+                    <input type="date" id="check_in_date" name="check_in_date" placeholder="check in date" style="text-align:center;" required><br>
+    
+                    Check-Out Date:<br>
+                    <input type="date" id="check_out_date" name="check_out_date" placeholder="check out date" style="text-align:center;" required>
+                    <br>
+    
+                    Number of Stayers:<br>
+                    <input type="text" id="numOfStayers" name="numOfStayers" placeholder="number of stayers" style="text-align:center;" required>
+                    <br>
+    
+                    <input type="submit" name="Book" value="Book a reservation" onclick="controlInput()">
+                </form>
+        
+            </div>     
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="guesthomepage"  ><button>Go back</button></a>
+            </div>     
+         
+        </div>
+    </body>
+</html>

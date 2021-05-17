@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Guest Home Page</title>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            //PARAMETERS FROM DATABASE
+            guestName = "{{name[0]}}";
+            reservations = [
+                ["246","26.06.2021",7],
+                ["178","23.01.2021",5],
+                ["325","16.06.2020",10]
+            ]
+
+            function makeTableHTML() {
+
+                document.write("<table style='border:1px solid black;margin-left:auto;margin-right:auto;'");
+                document.write("<thead><tr><th>Reservation ID</th><th>Reservation Date</th><th>Check-In Date</th><th>Check-Out Date</th><th>Number of Stayers</th><th>Price</th><th>Reserved by</th></tr></thead>");
+                document.write ("<tbody>");     
+                document.write ("{% for row in data %}");
+                document.write("<tr>");
+                document.write("<td>{{ row[0]}}</td>");
+                document.write("<td>{{ row[1]}}</td>");
+                document.write("<td>{{ row[2]}}</td>");
+                document.write("<td>{{ row[3]}}</td>");
+                document.write("<td>{{ row[4]}}</td>");
+                document.write("<td>{{ row[5]}}</td>");
+                document.write("<td>{{ row[6]}}</td>");
+                document.write("</tr>");
+                document.write("{% endfor %}")
+                document.write("</tbody></table>");
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+            <div class="h1">
+                <br> Welcome 
+                <script>document.write(guestName)</script>,
+                <br>
+            </div>
+
+            <div class="h3" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br> <u>My Reservations:</u> <br>
+                <script>makeTableHTML();</script>
+
+            </div>
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="bookreservationpage"><button>Book a reservation</button></a>
+                <a href="foodorders"><button>Food orders</button></a>
+                <a href="buyticket"><button>Buy a ticket</button></a>
+                <a href="shopping"><button>Shopping</button></a>
+                <a href="leavecomment"  ><button>Leave Comment</button></a>
+                <a href="indexpage"  ><button>Logout</button></a>
+            </div>    
+
+        </div>
+    </body>
+</html>

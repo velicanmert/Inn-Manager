@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>New Food Order</title>
+        <script src="jquery-3.5.1.min.js"></script>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            function getRow(n) {
+                var selected = []
+                var row = n.parentNode.parentNode;
+                var cols = row.getElementsByTagName("td");
+                var i = 0;
+
+                while (i < cols.length) {
+                    var val = cols[i].childNodes[0].nodeValue;
+                    if (val != null) {
+                        selected.push(val)
+                    }
+                    i++;
+                }
+            }
+        </script>
+
+        <script>
+            function controlInput() {      
+                document.getElementById("restaurantSelection").value = localStorage.getItem("selection");
+                var form = document.getElementById("login").submit();       
+            }
+        </script>
+        
+        <script>
+            var restaurantChoice;
+
+            function getval(sel)
+            {
+                restaurantChoice = sel.value;
+                localStorage.setItem("selection", restaurantChoice);
+                document.getElementById("restaurantSelection").value = restaurantChoice;
+                //alert(sel.value);
+            }
+            
+
+        </script>
+
+        <script>
+
+            restaurant1 = [
+                ["Squirrel Fish","50$"],
+                ["Hamburger","30$"],
+                ["Grilled Chicken","35$"]
+            ]
+            restaurant2 = [
+                ["Coca-cola","50$"],
+                ["Pizza","30$"],
+                ["Manti","35$"]
+            ]
+
+            restaurant3 = [
+                ["Doner","50$"],
+                ["Kebap","30$"],
+                ["Ayran","5$"]
+            ]
+
+            function makeTableHTML() {
+                var choice =  localStorage.getItem("selection");
+                
+                
+                if( choice=="Restaurant1"){
+                    document.write("<table style='border:1px solid black'");
+                    document.write("<thead><tr><th>Food ID</th><th>Food Name</th><th>Price</th></tr></thead>");
+                    document.write ("<tbody>");
+                    document.write ("{% for row in restaurant1 %}");
+                    document.write("<tr>");
+                    document.write("<td>{{ row[0]}}</td>");
+                    document.write("<td>{{ row[1]}}</td>");
+                    document.write("<td>{{ row[2]}}</td>");
+                    document.write("</tr>");
+                    document.write("{% endfor %}")
+                    document.write("</tbody></table>");
+                }
+
+                if( choice=="Restaurant2"){
+                    document.write("<table style='border:1px solid black'");
+                    document.write("<thead><tr><th>Food ID</th><th>Food Name</th><th>Price</th></tr></thead>");
+                    document.write ("<tbody>");
+                    document.write ("{% for row in restaurant2 %}");
+                    document.write("<tr>");
+                    document.write("<td>{{ row[0]}}</td>");
+                    document.write("<td>{{ row[1]}}</td>");
+                    document.write("<td>{{ row[2]}}</td>");
+                    document.write("</tr>");
+                    document.write("{% endfor %}")
+                    document.write("</tbody></table>");
+                }
+
+                if( choice=="Restaurant3"){
+                    document.write("<table style='border:1px solid black'");
+                    document.write("<thead><tr><th>Food ID</th><th>Food Name</th><th>Price</th></tr></thead>");
+                    document.write ("<tbody>");
+                    document.write ("{% for row in restaurant3 %}");
+                    document.write("<tr>");
+                    document.write("<td>{{ row[0]}}</td>");
+                    document.write("<td>{{ row[1]}}</td>");
+                    document.write("<td>{{ row[2]}}</td>");
+                    document.write("</tr>");
+                    document.write("{% endfor %}")
+                    document.write("</tbody></table>");
+                }
+
+            }
+
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+        
+            <div class="h1">
+                <br> <b>New food order:</b> <br>
+            </div>
+
+            <div class="h2" style='text-align: left; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br><br>
+
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+                <label for="restaurantSelect">Select Restaurant:</label>
+
+                <select name="restaurantSelect" id="restaurantSelect" onchange="getval(this);" style="opacity: 0.5;" >
+                    <option disabled selected value> -- select -- </option>
+                    <option value="Restaurant1">Restaurant1</option>
+                    <option value="Restaurant2">Restaurant2</option>
+                    <option value="Restaurant3">Restaurant3</option>
+                </select>
+
+                <button onClick="window.location.reload();"  id='select-restaurant-button' style='font-size: smaller;'> List Foods</button>
+
+                <br>
+            </div>
+
+            <div class="h3" id="foodlister" style='text-align:left; color:rgb(12, 12, 12); font-family:Arial;'>
+
+                <form id = "foodOrder" method = "post" action="newfoodorder">
+
+                    <br><b>Available Foods:</b><br>
+
+                    <script>makeTableHTML();</script><br> <!--Prints table-->
+
+                    <input type="hidden" id="restaurantSelection" name="restaurantSelection" value="" >
+
+                    Food ID to Order:<br>
+                    <input type="text" id="selectedfoodid" name="selectedfoodid" placeholder="Food ID" style="text-align:center;" required>
+                    <br><br>
+
+                    <input type="submit" name="foodSubmit" value="Order Now!" onclick="controlInput()">
+
+                </form>
+
+            </div>     
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="foodorders"  ><button>Go back</button></a>
+            </div>     
+        
+        </div>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Shopping</title>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            var selected = []
+            function getRow(n) {
+                var row = n.parentNode.parentNode;
+                var cols = row.getElementsByTagName("td");
+                var i = 0;
+
+                while (i < cols.length) {
+                    var val = cols[i].childNodes[0].nodeValue;
+                    if (val != null) {
+                        selected.push(val)
+                        //alert(val);
+                    }
+                    i++;
+                }
+            }
+        </script>
+        
+        <script>
+            function controlInput() {      
+                var form = document.getElementById("login").submit();       
+            }
+        </script>
+
+        <script>
+
+            function changeItems() {
+
+                if (document.getElementById("shopSelect").value == "Prada"){
+                    document.getElementById("listShops").innerHTML = "<form id = 'foodOrder' method = 'post' action='orderfood.html'><br><b>Available Foods:</b><br><table border='1'><thead><tr><th>Food Name</th><th>Price</th><th>Select</th></tr></thead><tbody><tr><td>Squirrel Fish</td><td>50$</td><td><input type='checkbox' id='opt1' name= 'opt1' onclick='getRow(this)'/></td></tr><tr><td>Hamburger</td><td>30$</td><td><input type='checkbox' id='opt2' name= 'opt2' onclick='getRow(this)' /></td></tr><tr><td>Grilled Chicken</td><td>35$</td><td><input type='checkbox' id='opt3' name= 'opt3' onclick='getRow(this)' /></td></tr></tbody></table><br><input type='submit' name='foodSubmit' value='Order Now!' onclick='controlInput()'></form>";
+                } 
+
+                else if (document.getElementById("shopSelect").value == "City Drug"){
+                    document.getElementById("listShops").innerHTML = "<form id = 'foodOrder' method = 'post' action='orderfood.html'><br><b>Available Foods:</b><br><table border='1'><thead><tr><th>Food Name</th><th>Price</th><th>Select</th></tr></thead><tbody><tr><td>Squirrel Fish</td><td>50$</td><td><input type='checkbox' id='opt1' name= 'opt1' onclick='getRow(this)'/></td></tr><tr><td>Hamburger</td><td>30$</td><td><input type='checkbox' id='opt2' name= 'opt2' onclick='getRow(this)' /></td></tr><tr><td>Grilled Chicken</td><td>35$</td><td><input type='checkbox' id='opt3' name= 'opt3' onclick='getRow(this)' /></td></tr></tbody></table><br><input type='submit' name='foodSubmit' value='Order Now!' onclick='controlInput()'></form>";
+                }
+
+                else if (document.getElementById("shopSelect").value == "Burgerino"){
+                    document.getElementById("list-div").innerHTML = "<form id = 'foodOrder' method = 'post' action='orderfood.html'><br><b>Available Foods:</b><br><table border='1'><thead><tr><th>Food Name</th><th>Price</th><th>Select</th></tr></thead><tbody><tr><td>Squirrel Fish</td><td>50$</td><td><input type='checkbox' id='opt1' name= 'opt1' onclick='getRow(this)'/></td></tr><tr><td>Hamburger</td><td>30$</td><td><input type='checkbox' id='opt2' name= 'opt2' onclick='getRow(this)' /></td></tr><tr><td>Grilled Chicken</td><td>35$</td><td><input type='checkbox' id='opt3' name= 'opt3' onclick='getRow(this)' /></td></tr></tbody></table><br><input type='submit' name='foodSubmit' value='Order Now!' onclick='controlInput()'></form>";
+                }
+
+                else if (document.getElementById("shopSelect").value == "Goldmine Jewelry"){
+                    document.getElementById("list-div").innerHTML = "<form id = 'foodOrder' method = 'post' action='shopping'><br><b>Available Foods:</b><br><table border='1'><thead><tr><th>Food Name</th><th>Price</th><th>Select</th></tr></thead><tbody><tr><td>Ring</td><td>150$</td><td><input type='checkbox' id='opt1' name= 'opt1' onclick='getRow(this)'/></td></tr><tr><td>Necklace</td><td>100$</td><td><input type='checkbox' id='opt2' name= 'opt2' onclick='getRow(this)' /></td></tr><tr><td>Golden Watch</td><td>500$</td><td><input type='checkbox' id='opt3' name= 'opt3' onclick='getRow(this)' /></td></tr></tbody></table><br><input type='submit' name='foodSubmit' value='Order Now!' onclick='controlInput()'></form>";
+                }
+
+            }
+        </script>
+
+
+        <script>
+            function changeShops() {
+                if (document.getElementById("clothing").checked){
+                    document.getElementById("listShops").innerHTML = "<br><br><label for='shopSelect'>Select Shop:</label>&nbsp;&nbsp;<select name='shopSelect' style='opacity: 0.5;' id='shopSelect'><option disabled selected value> --select-- </option><option value='Prada'>Prada</option><option value='Armani'>Armani</option><option value='Burberry'>Burberry</option></select>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick='changeItems()' id='select-button' style='font-size: smaller;'> List Items</button><br>";
+                } 
+
+                else if (document.getElementById("drugstore").checked){
+                    document.getElementById("listShops").innerHTML = "<br><br><label for='shopSelect'>Select Shop:</label>&nbsp;&nbsp;<select name='shopSelect' style='opacity: 0.5;' id='shopSelect'><option disabled selected value> --select-- </option><option value='City Drug'>City Drug</option><option value='Brennen Drugs'>Brennen Drugs</option><option value='Omnicare'>Omnicare</option></select>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick='changeItems()' id='select-button' style='font-size: smaller;'> List Items</button><br>";
+                }
+
+                else if (document.getElementById("eatables").checked){
+                    document.getElementById("listShops").innerHTML = " <br><br><label for='shopSelect'>Select Shop:</label>&nbsp;&nbsp;<select name='shopSelect' style='opacity: 0.5;' id='shopSelect'><option disabled selected value> --select-- </option><option value='Burgerino'>Burgerino</option><option value='Kebabino'>Kebabino</option><option value='Popeyes'>Popeyes</option></select>&nbsp;&nbsp;<button onclick='changeItems()' id='select-button' style='font-size: smaller;'> List Items</button><br>";
+                }
+
+                else if (document.getElementById("jewelry").checked){
+                    document.getElementById("listShops").innerHTML = " <br><br><label for='shopSelect'>Select Shop:</label>&nbsp;&nbsp;<select name='shopSelect' style='opacity: 0.5;' id='shopSelect'><option disabled selected value> --select-- </option><option value='Goldmine Jewelry' id='Goldmine Jewelry'>Goldmine Jewelry</option><option value='Old Town Jewels'>Old Town Jewels</option><option value='Handmade Love'>Handmade Love</option></select>&nbsp;&nbsp;<button onclick='changeItems()' id='select-button' style='font-size: smaller;'> List Items</button><br>";
+                }
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+        
+            <div class="h1" style='text-align: left;'>
+                <br><br> <b>Hotel Shopping:</b> 
+            </div>
+            
+            <div class="h2" id="typeselecter" style='text-align: left; color:rgb(12, 12, 12); font-family:Arial;'> 
+                <form onchange="changeShops()" name="frmRadio" id="radio-buttons" >
+                    <input type="radio" id="clothing" name= "typeselection"  onclick="document.getElementById('radio-buttons').action='';"  />Clothing &nbsp;&nbsp;
+                    <input type="radio" id="drugstore" name= "typeselection" onclick="document.getElementById('radio-buttons').action='';" />Drug Store&nbsp;&nbsp;
+                    <input type="radio" id="eatables" name= "typeselection" onclick="document.getElementById('radio-buttons').action='';" />Eatables&nbsp;&nbsp;
+                    <input type="radio" id="jewelry" name= "typeselection" onclick="document.getElementById('radio-buttons').action='';" />Jewelry&nbsp;&nbsp;
+                    <br><br>
+                </form>
+            </div>
+
+
+            <div class="h2" id="listShops" style='text-align: left; color:rgb(12, 12, 12); font-family:Arial;'>
+                <!--Filled by changeShops() function -->
+            </div>
+
+            <div class="h3" id="list-div" style='text-align:left; color:rgb(12, 12, 12); font-family:Arial;'>
+
+                <!--<form id = "foodOrder" method = "post" action="orderfood.html">
+
+                    <br><b>Available Foods:</b><br>
+                    <table border="1">
+                        <thead><tr><th>Food Name</th><th>Price</th><th>Select</th></tr></thead>
+                        <tbody>
+                            <tr>          
+                                <td>Squirrel Fish</td>
+                                <td>50$</td>
+                                <td><input type="checkbox" id="opt1" name= "opt1" onclick="getRow(this)"  /></td>
+                            </tr>
+
+                            <tr>                
+                                <td>Hamburger</td>
+                                <td>30$</td>
+                                <td><input type="checkbox" id="opt2" name= "opt2" onclick="getRow(this)" /></td>
+                            </tr>
+
+                            <tr>         
+                                <td>Grilled Chicken</td>
+                                <td>35$</td>
+                                <td><input type="checkbox" id="opt3" name= "opt3" onclick="getRow(this)" /></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                    <br>
+                    <input type="submit" name="foodSubmit" value="Order Now!" onclick="controlInput()">
+
+                </form> --> 
+            </div>     
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="guesthomepage"  ><button>Go back</button></a>
+            </div>     
+        
+        </div>
+    </body>
+</html>

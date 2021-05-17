@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Food Details</title>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            //PARAMETERS FROM DATABASE
+            var foodName = "{{foodName}}"
+            var orderDate = "{{orderdate}}"
+            var deliveryStatus = "delivered"
+            var housekeeperName = "Emily Ruby"
+            var restaurantName= "{{restaurantID}}"
+            var orderPrice = "{{foodPrice}}"
+        </script>
+
+        <script>
+            var foodImage ='<img src="{{url_for("static",filename="Hamburger.jpg")}}" id="imageBox" height="250" weight="250" />';
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>  
+
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+            <div class="h1">
+                <br> <b>Order Details</b> <br>
+            </div>
+
+            <div style='text-align: center' id="imageDiv">
+                <script>document.write(foodImage)</script>
+            </div>
+
+            <div class="h2" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br> 
+                <u>Food Name:&nbsp;&nbsp;</u> <script>document.write(foodName)</script>   <br>
+                <u>Order Date:&nbsp;&nbsp;</u>  <script>document.write(orderDate)</script>   <br>
+                <u>Delivery Status:&nbsp;&nbsp;</u>  <script>document.write(deliveryStatus)</script>   <br>
+                <u>Housekeeper Name:&nbsp;&nbsp;</u>  <script>document.write(housekeeperName)</script>   <br>
+                <u>Restaurant No:&nbsp;&nbsp;</u>  <script>document.write(restaurantName)</script>   <br>
+                <u>Order Price($):&nbsp;&nbsp;</u>  <script>document.write(orderPrice)</script>   <br>
+            </div> 
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="foodorders"  ><button>Go back</button></a>
+            </div>     
+    
+        </div>
+    </body>
+</html>

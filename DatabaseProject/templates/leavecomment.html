@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Leave Comment</title>
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
+
+    <body>
+    <script src="bootstrap.js"></script>
+    <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+
+
+        <div class="h1">    
+            <br> Leave comment to us!
+            <br>   
+        </div>
+
+        <div style='text-align: center'>
+            <img src="{{url_for('static',filename='hotelpic.png')}}" alt="Hotel Scene"> 
+        </div>
+        
+        <script>
+            function controlInput() {
+                if (document.getElementById("comment").value == "" ) {
+                    alert("Cannot send empty comment");
+                }
+                else {
+                    var form = document.getElementById("login").submit();
+                }
+            }
+        </script>
+
+        <div class="h3" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+            
+            <br>
+            Comment:<br>
+            <input type="text" id= "comment" name="comment" placeholder="enter comment" style="text-align:center;" required><br><br>
+            <a href="guesthomepage"  ><button>Comment</button></a>
+            <br>
+        </div>        
+        
+        <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+            <br><br><br>
+            <a href="guesthomepage"  ><button>Go back</button></a>
+        </div>
+
+    </div>
+    </body>
+</html>

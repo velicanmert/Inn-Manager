@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Food Orders</title>
+        <link rel="stylesheet" href="bootstrap.css">
+
+        <script>
+            //PARAMETERS FROM DATABASE
+
+            foodorders = [
+                ["Hamburger","26.03.2021"],
+                ["Grilled Chicken","23.01.2021"],
+                ["Pizza","16.06.2020"]
+            ]
+
+            function makeTableHTML() {
+
+                document.write("<table style='border:1px solid black;margin-left:auto;margin-right:auto;'");
+                document.write("<thead><tr><th>Order ID</th><th>Order Date</th><th>Food ID</th></tr></thead>");
+                document.write ("<tbody>");
+                document.write ("{% for row in orders %}");
+                document.write("<tr>");
+                document.write("<td>{{ row[0]}}</td>");
+                document.write("<td>{{ row[1]}}</td>");
+                document.write("<td>{{ row[2]}}</td>");
+                document.write("</tr>");
+                document.write("{% endfor %}")
+                document.write("</tbody></table>");
+            }
+        </script>
+
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+            <div class="h1">
+                <br> Welcome to Food Section! <script>document.write(guestName)</script>,
+                <br>
+            </div>
+
+            <div class="h2" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br> <u>Order List:</u> <br>
+                <script>makeTableHTML();</script>
+                <br>
+            </div>
+
+            <div class="h3"  style='text-align:center; color:rgb(12, 12, 12); font-family:Arial;'>
+
+                <form id = "fooddetails" method = "post" action="foodorders">
+
+                    <!--<br><b>Enter the order ID to see details:</b>-->
+                    <input type="text" id="selectedorderid" name="selectedorderid" placeholder="Order ID" style="text-align:center;" required>
+                    <input type="submit" name="seedetails" value="See Details" onclick="controlInput()">
+                    <br><br>
+
+                </form>
+
+            </div> 
+
+            <div class="h3" style='text-align:center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br><br><br>
+                <a href="newfoodorder"  ><button>New Order</button></a>
+            </div>    
+
+            <div class="h4" style='text-align:start; color:rgb(12, 12, 12); font-family:Arial; position: fixed; bottom: 0; width: 100%;'>
+                <br><br><br>
+                <a href="guesthomepage"  ><button>Go back</button></a>
+            </div>     
+        
+
+        </div>
+    </body>
+</html>

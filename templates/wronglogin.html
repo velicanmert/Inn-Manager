@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Wrong Credentials</title>
+        <link rel="stylesheet" href="bootstrap.css">
+    </head>
+
+    <body>
+        <script src="bootstrap.js"></script>
+        <div style='height: 100%; width: 100%; background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),url({{url_for("static",filename="indexBackground.jpg")}});background-position: center; background-size: cover;position: absolute;'>
+            
+
+            <div class="h1">
+                
+                <br> Welcome to hotel managament system!
+                <br>   
+            </div>
+            <div style='text-align: center'>
+                <img src="{{url_for('static',filename='hotelpic.png')}}" alt="Hotel Scene"> <br>
+            </div>
+
+            <div class="h2" style='text-align: center; color:rgb(12, 12, 12); font-family:Arial;'>
+                <br> <b>Login credentials incorrect !</b> <br>   
+            </div>
+            
+            <div class="h3" style='text-align:center; color:rgb(12, 12, 12); font-family:Arial; width: 100%;'>
+                <br><br><br>
+                <a href="indexpage"  ><button>Try again</button></a>
+            </div>
+        
+        </div>
+    </body>
+</html>
